@@ -4,8 +4,8 @@ import { join, dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import { fileURLToPath } from 'url';
-import livereload from 'livereload';
-import livereloadMiddleware from 'connect-livereload';
+// import livereload from 'livereload';
+// import livereloadMiddleware from 'connect-livereload';
 
 
 import indexRouter from './routes/index.js';
@@ -14,11 +14,11 @@ import usersRouter from './routes/users.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const liveServer = livereload.createServer({
-  exts: ['js', 'html', 'css', 'ejs'],
-  debug: true
-});
-liveServer.watch(join(__dirname, 'public'));
+// const liveServer = livereload.createServer({
+//   exts: ['js', 'html', 'css', 'ejs'],
+//   debug: true
+// });
+// liveServer.watch(join(__dirname, 'public'));
 
 const app = express();
 
@@ -33,11 +33,11 @@ app.use(cookieParser());
 app.use(express.static(join(__dirname, 'public')));
 app.use(express.static(join(__dirname, 'dist')));
 
-app.use(livereloadMiddleware({
-  host: 'http://localhost:3000',
-  port: 35729,
-  ignore: ['.js']
-}));
+// app.use(livereloadMiddleware({
+//   host: 'http://localhost:3000',
+//   port: 35729,
+//   ignore: ['.js']
+// }));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
